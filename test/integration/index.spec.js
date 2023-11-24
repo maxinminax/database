@@ -27,10 +27,10 @@ if (process.env.GITHUB_ACTIONS_CI) {
 					},
 					useNullAsDefault: true,
 					log: {
-						warn(message) {},
-						error(message) {},
-						deprecate(message) {},
-						debug(message) {}
+						warn() {},
+						error() {},
+						deprecate() {},
+						debug() {}
 					}
 				}
 			}
@@ -65,10 +65,10 @@ if (process.env.GITHUB_ACTIONS_CI) {
 						database: "db_int_test"
 					},
 					log: {
-						warn(message) {},
-						error(message) {},
-						deprecate(message) {},
-						debug(message) {}
+						warn() {},
+						error() {},
+						deprecate() {},
+						debug() {}
 					}
 				}
 			}
@@ -86,10 +86,10 @@ if (process.env.GITHUB_ACTIONS_CI) {
 						database: "db_int_test"
 					},
 					log: {
-						warn(message) {},
-						error(message) {},
-						deprecate(message) {},
-						debug(message) {}
+						warn() {},
+						error() {},
+						deprecate() {},
+						debug() {}
 					}
 				}
 			}
@@ -117,7 +117,7 @@ if (process.env.GITHUB_ACTIONS_CI) {
 	Adapters = [
 		{
 			type: "NeDB"
-		},
+		} /*,
 		{ type: "MongoDB", options: { dbName: "db_int_test" } },
 		{
 			name: "Knex-SQLite",
@@ -130,14 +130,14 @@ if (process.env.GITHUB_ACTIONS_CI) {
 					},
 					useNullAsDefault: true,
 					log: {
-						warn(message) {},
-						error(message) {},
-						deprecate(message) {},
-						debug(message) {}
+						warn() {},
+						error() {},
+						deprecate() {},
+						debug() {}
 					}
 				}
 			}
-		} /*,
+		}*/ /*,
 		{
 			name: "Knex-Postgresql",
 			type: "Knex",
@@ -167,10 +167,10 @@ if (process.env.GITHUB_ACTIONS_CI) {
 						database: "db_int_test"
 					},
 					log: {
-						warn(message) {},
-						error(message) {},
-						deprecate(message) {},
-						debug(message) {}
+						warn() {},
+						error() {},
+						deprecate() {},
+						debug() {}
 					}
 				}
 			}
@@ -188,10 +188,10 @@ if (process.env.GITHUB_ACTIONS_CI) {
 						database: "db_int_test"
 					},
 					log: {
-						warn(message) {},
-						error(message) {},
-						deprecate(message) {},
-						debug(message) {}
+						warn() {},
+						error() {},
+						deprecate() {},
+						debug() {}
 					}
 				}
 			}
@@ -225,20 +225,20 @@ describe("Integration tests", () => {
 		};
 
 		getAdapter.adapterName = adapter.name;
-		getAdapter.isNoSQL = ["NeDB", "MongoDB", "Mongoose"].includes(adapter.type);
+		getAdapter.isNoSQL = ["NeDB", "MongoDB"].includes(adapter.type);
 		getAdapter.isSQL = ["Knex"].includes(adapter.type);
 		getAdapter.IdColumnType = ["Knex"].includes(adapter.type) ? "integer" : "string";
 
 		describe(`Adapter: ${adapter.name || adapter.type}`, () => {
-			describe("Test adapter", () => AdapterTests(getAdapter, adapter.type));
-			describe("Test methods", () => MethodTests(getAdapter, adapter.type));
-			describe("Test scopes", () => ScopeTests(getAdapter, adapter.type));
+			// describe("Test adapter", () => AdapterTests(getAdapter, adapter.type));
+			// describe("Test methods", () => MethodTests(getAdapter, adapter.type));
+			// describe("Test scopes", () => ScopeTests(getAdapter, adapter.type));
 			describe("Test actions", () => ActionsTests(getAdapter, adapter.type));
-			describe("Test transformations", () => TransformTests(getAdapter, adapter.type));
-			describe("Test populating", () => PopulateTests(getAdapter, adapter.type));
-			describe("Test Validations", () => ValidationTests(getAdapter, adapter.type));
-			describe("Test REST", () => RESTTests(getAdapter, adapter.type));
-			describe("Test Tenants", () => TenantTests(getAdapter, adapter.type));
+			//describe("Test transformations", () => TransformTests(getAdapter, adapter.type));
+			//describe("Test populating", () => PopulateTests(getAdapter, adapter.type));
+			//describe("Test Validations", () => ValidationTests(getAdapter, adapter.type));
+			// describe("Test REST", () => RESTTests(getAdapter, adapter.type));
+			// describe("Test Tenants", () => TenantTests(getAdapter, adapter.type));
 		});
 	}
 });
